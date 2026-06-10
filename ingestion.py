@@ -75,6 +75,11 @@ def fetch_cac40(metric: str) -> pd.DataFrame:
         rows.append((date, price))
 
     df = pd.DataFrame(rows, columns=["date", "value"])
+    df = df[
+        df["date"].between(
+            pd.Timestamp("2020-01-01").date(), pd.Timestamp("2025-12-12").date()
+        )
+    ]
     df["metric"] = metric
     df["source"] = SOURCE_NAMES[metric]
     df = df.dropna(subset=["value"])

@@ -43,7 +43,7 @@ STATIC_SOURCES = {
 
 SOURCES = {
     "inflation": "https://api.worldbank.org/v2/country/FR/indicator/FP.CPI.TOTL.ZG?format=json&date=2020:2025&per_page=20",
-    "cac40": "https://query1.finance.yahoo.com/v8/finance/chart/%5EFCHI?interval=1mo&range=5y",
+    "cac40": "https://query1.finance.yahoo.com/v8/finance/chart/%5EFCHI?interval=1mo&range=7y",
 }
 
 SOURCE_NAMES = {

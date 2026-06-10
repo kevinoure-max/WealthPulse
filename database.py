@@ -20,7 +20,7 @@ def init_db():
     cursor = conn.cursor()
     cursor.execute(
         """
-        CREATE TABLE financial_data (
+        CREATE TABLE IF NOT EXISTS financial_data (
             id          SERIAL PRIMARY KEY,
             date        DATE NOT NULL,
             metric      TEXT NOT NULL,
