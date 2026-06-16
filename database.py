@@ -80,3 +80,24 @@ def get_data(metric, start_date=None, end_date=None):
     conn.close()
     columns = ["id", "date", "metric", "value", "source", "created_at"]
     return pd.DataFrame(rows, columns=columns)
+
+
+def get_latest_value(metric: str) -> dict:
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        """
+        SELECT date, value
+        FROM financial_data
+        WHERE metric = %s
+        ORDER BY date DESC
+        LIMIT 1
+        """,
+        (metric,),
+    )
+    row = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    if row is None:
+        raise ValueError(f"No data available for {metric}")
+    return {"date": str(row[0]), "value": row[1]}
