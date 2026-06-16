@@ -1,0 +1,15 @@
+# Database
+*.db
+
+# Virtual env
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
