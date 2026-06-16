@@ -79,7 +79,10 @@ def get_data(metric, start_date=None, end_date=None):
     cursor.close()
     conn.close()
     columns = ["id", "date", "metric", "value", "source", "created_at"]
-    return pd.DataFrame(rows, columns=columns)
+    df = pd.DataFrame(rows, columns=columns)
+    df["date"] = df["date"].astype(str)
+    df["created_at"] = df["created_at"].astype(str)
+    return df
 
 
 def get_latest_value(metric: str) -> dict:

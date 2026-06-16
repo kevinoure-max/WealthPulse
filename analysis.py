@@ -4,6 +4,9 @@ import pandas as pd
 def compute_real_return(
     asset_rate: float, inflation_rate: float, amount: float
 ) -> dict:
+    # Note : asset_rate is the nominal annual rate as published by Banque de France
+    # For Livret A et LEP, interest is compound semi-annually, giving a slighly higher effective annual rate.
+    # Difference is negligible for rate below 5%
     if inflation_rate is None:
         raise ValueError("Inflation data is not available for this period")
 
@@ -27,6 +30,9 @@ def compute_rolling_average(df: pd.DataFrame, window: int = 3) -> pd.DataFrame:
     df = df.copy()
     df = df.sort_values("date")
     df["rolling_avg"] = df["value"].rolling(window=window).mean()
+    df["rolling_avg"] = (
+        df["rolling_avg"].astype(object).where(df["rolling_avg"].notna(), None)
+    )
     return df
 
 
