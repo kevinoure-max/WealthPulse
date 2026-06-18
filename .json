@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "asset": "lep",
+      "rate": 2.5,
+      "real_rate": 0.5
+    },
+    {
+      "asset": "livret_a",
+      "rate": 1.5,
+      "real_rate": -0.5
+    }
+  ]
+}
+
+
+
+
+
